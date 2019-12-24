@@ -1,0 +1,93 @@
+# make sure to execute this cell so that your function is defined
+# you must re-run this cell any time you make a change to this function
+
+def run_length_encoder(in_string):
+    # write your code here
+    # be sure to include a `return` statement so that
+    # your function returns the appropriate object.  
+    
+    if in_string == "":
+        print("empty")
+        return ([])
+    
+    if len(in_string) == 1:
+        print("length-1")
+        return([in_string])
+    
+    if len(in_string) > 1:
+        encode_string = []    
+        char_count = 1
+        index = 0              # initializes the index to go throughout the string 
+        index_set = 0
+        first = in_string[0]
+        
+        #print("length- >1")
+    
+        for first in in_string:          # a loop that goes through every character in the og string
+            end_index = len(in_string)
+            start_index = index_set + 1
+            char_count = 1
+            index = 0
+            first = in_string[0]
+            
+            
+            #print("index_set is:", index_set)
+           
+            if index_set < (len(in_string)-1):
+                
+                first = in_string[index_set]
+                
+                # print("error loop")
+
+                
+                if in_string[index_set] == in_string[index + 1]:  # checks if the first element of the string is the same as the second element
+                    #print("first = rest")
+                    char_count += 1     # increments the count for number of that character
+                    index += 1
+                    
+                    if char_count == len(in_string):
+                            encode_string.append(first)
+                            encode_string.append(first)
+                            encode_string.append(char_count)
+                            return(encode_string)
+                        
+                    while first == in_string[index + 1]:  # will iterate throughout in_string to find elements that are consecutively equal to index_f_pt
+                        #print("loop first = rest")
+                        char_count += 1
+                        index += 1
+                        
+                        if char_count == len(in_string):
+                            encode_string.append(first)
+                            encode_string.append(first)
+                            encode_string.append(char_count)
+                            return(encode_string)
+                        
+                    encode_string.append(first)
+                    encode_string.append(first)
+                    encode_string.append(char_count)
+                    
+                    in_string = in_string[start_index + char_count-1:end_index]    # decrement 
+                    
+                    #print("in_string replaced as:", in_string)
+                
+                    #print("replace as:",first)
+                    #print("append/replace")
+                
+                elif in_string[index_set] != in_string[index + 1]:  # checks if the first element of the string is different from the second element
+                    #print("first != rest")
+                    encode_string.append(first)
+                    
+                    in_string = in_string[start_index:end_index]   # decrement
+                    
+                    #print("start/end index",start_index,end_index)
+                    
+                    
+                if len(in_string) == 1:
+                    first = in_string[0]
+                    encode_string.append(first)
+                    return(encode_string)
+                
+                #print("increment")
+                 # second index is meant to increment
+            
+    return(encode_string)   
