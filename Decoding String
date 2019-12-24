@@ -1,0 +1,62 @@
+def run_length_decoder(in_list):
+    # write your code here
+    # be sure to include a `return` statement so that
+    # your function returns the appropriate object.
+    encode_list = ""
+    
+    if in_list == []:
+        return ("")
+    
+    if len(in_list) == 1:
+        encode_list += in_list[0]
+        return(encode_list)
+    
+    if len(in_list) > 1:
+            
+        index = 0              # initializes the index to go throughout the string 
+        index_set = 0
+        first = in_list[0]
+    
+        for first in in_list:          # a loop that goes through every character in the og list
+            end_index = len(in_list)
+            start_index = index_set + 1
+            index = 0
+            first = in_list[0]
+            
+            
+            #print("index_set is:", index_set)
+           
+            if index_set < (len(in_list)-1):
+                
+                first = in_list[index_set]
+                
+                # print("error loop")
+                if in_list[index_set] == in_list[index + 1]:  # checks if the first element of the string is the same as the second element
+                    #print("first = rest")
+                    index += 2
+                    encode_list += first * in_list[index]
+                
+                    in_list = in_list[start_index + 2:end_index]    # decrement 
+                
+                    if len(in_list) == 0:
+                        return(encode_list)
+                    # if I do return encode_list the "aa" returns and that is correct
+                    # but when I take out the return the
+                
+                elif in_list[index_set] != in_list[index + 1]:  # checks if the first element of the list is different from the second element
+    
+                    encode_list += first
+                    in_list = in_list[start_index:end_index]   # decrement
+                
+                if len(in_list) == 1:
+                    first = in_list[0]
+                    encode_list += first
+                   
+                    return(encode_list)
+                    
+                
+                
+                #print("increment")
+                 # second index is meant to increment
+            
+    return(encode_list)
