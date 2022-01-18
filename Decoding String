@@ -60,3 +60,4 @@ def run_length_decoder(in_list):
                  # second index is meant to increment
             
     return(encode_list)
+vim: syntax=python
